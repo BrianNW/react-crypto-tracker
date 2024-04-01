@@ -9,9 +9,9 @@ function App() {
      axios.get("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd").then(res => {
       setCoins(res.data);
       console.log(res.data)
-     })
+     }).catch(()=> console.log(error))
   
-  })
+  }, [])
 
   return (
     <>
