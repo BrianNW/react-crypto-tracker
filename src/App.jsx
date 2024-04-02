@@ -14,12 +14,11 @@ function App() {
   }, [])
 
   return (
-    <>
-      <div>
-        <h1>Cryptoyz Tracker</h1>
+      <div className = 'coin-app'>
+        <div className = 'coin-search'>
+        
+        </div>
       </div>
-      
-    </>
   )
 }
 
