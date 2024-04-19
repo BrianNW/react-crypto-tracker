@@ -33,7 +33,7 @@ function App() {
         </div>
         {filteredCoins.map(coin => {
           return (
-            <Coin key={coin.id} name={coin.name} image={coin.image} symbol={coin.symbol} volume={coin.market_cap}/>
+            <Coin key={coin.id} name={coin.name} image={coin.image} symbol={coin.symbol} volume={coin.market_cap} price={coin.current_price}/>
           )
         })}
       </div>
