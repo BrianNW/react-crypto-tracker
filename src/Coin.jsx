@@ -19,3 +19,4 @@ const Coin = ({ name, image, symbol, price, volume }) => {
 }
 
 export default Coin
+

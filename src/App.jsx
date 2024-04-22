@@ -11,7 +11,7 @@ function App() {
      axios.get("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd").then(res => {
       setCoins(res.data);
       console.log(res.data)
-     }).catch(()=> console.log(error))
+     }).catch((e)=> console.log(e))
   
   }, [])
 
@@ -34,7 +34,7 @@ function App() {
         </div>
         {filteredCoins.map(coin => {
           return (
-            <Coin key={coin.id} name={coin.name} image={coin.image} symbol={coin.symbol} volume={coin.market_cap} price={coin.current_price}/>
+            <Coin key={coin.id} name={coin.name} image={coin.image} symbol={coin.symbol} volume={coin.market_cap} price={coin.current_price} priceChange={coin.price_change_percentage_24h}/>
           )
         })}
       </div>
