@@ -39,9 +39,10 @@ function App() {
             name={coin.name} 
             image={coin.image} 
             symbol={coin.symbol} 
-            olume={coin.market_cap} 
+            marketcap={coin.market_cap} 
             price={coin.current_price} 
             priceChange={coin.price_change_percentage_24h}
+            colume={coin.total_volume}
             />
           )
         })}
