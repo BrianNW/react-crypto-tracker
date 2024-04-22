@@ -15,6 +15,7 @@ function App() {
   
   }, [])
 
+  // handle the search input using the useState above
   const handleChange = e => {
     setSearch(e.target.value)
   }
