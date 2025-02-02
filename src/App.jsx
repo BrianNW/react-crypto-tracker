@@ -25,9 +25,21 @@ function App() {
 )
 
   return (
-      <div className = 'coin-app'>
+    <>
+      <nav id="nav-container">
+        <span id="logo-container"> <a href=""><img src="../public/aureus-logo.png" alt="logo" id="logo" /></a> </span>
+          <ul id="navbar">            
+            <li className="navitem"><a href="#">Home</a></li>
+            <li className="navitem"><a href="#">Login</a></li>
+            <li className="navitem"><a href="#">Contact</a></li>
+            <li className="navitem"><a href="#">About</a></li>
+          </ul>
+      </nav>
+     <div className = 'coin-app'>         
         <div className = 'coin-search'>
-          <h1 className="coin-text">Search a currency</h1>
+          <h1 className="coin-text">Search A Currency</h1>
+          <span> Prices shown in USD.</span>
+          <span> Don't see any data appear? Wait a few seconds before refreshing. This is due to the free API fetch limitation.</span>
           <form> 
             <input type="text" placeholder="Search" className="coin-input" onChange= {handleChange}/>
           </form>
@@ -47,6 +59,8 @@ function App() {
           )
         })}
       </div>
+    </>     
+     
   )
 }
 
