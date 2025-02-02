@@ -7,13 +7,23 @@ function App() {
   const [coins, setCoins] = useState([])
   const [search, setSearch] = useState('')
   const [loading, setLoading] = useState(false); //button load state
+  const [message, setMessage] = useState(""); // State for notification message
 
 
   const fetchData = async () => {
     setLoading(true); // Show loading when fetching
+    setMessage(""); // Clear old message
+    console.log("Fetching new data...");
     try {
       const res = await axios.get("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd");
       setCoins(res.data);
+      //Show success message after fetching
+      setMessage("✅ Data updated successfully!");
+
+      // Hide message after 3 seconds
+      setTimeout(() => {
+        setMessage("");
+      }, 3000);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -55,7 +65,7 @@ function App() {
       <div className ='coin-app'>        
         <div className = 'coin-search'>
           <h1 className="coin-text">Search a currency.  (This is only a demo)</h1>
-          <span> Prices shown in USD. Refreshes automatically every 10 seconds.</span>
+          <span> Prices shown in USD.</span>
           <span> Don't see any data appear? Wait a few seconds before refreshing. This is due to the free API fetch limitation.</span>
           <form> 
             <input type="text" placeholder="Search" className="coin-input" onChange= {handleChange}/>
@@ -65,7 +75,11 @@ function App() {
           <button onClick={fetchData} disabled={loading} className="refresh-btn">
             {loading ? "Refreshing..." : "Refresh Data"}
           </button>
+
+           {/* Notification Message */}
+           {message && <p className="refresh-notification">{message}</p>}
         </div>
+        {/* map out coin data to the page */}
         {filteredCoins.map(coin => {
           return (
             <Coin 

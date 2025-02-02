@@ -124,3 +124,7 @@
   background-color: #cccccc;
   cursor: not-allowed;
 }
+
+.refresh-notification{
+  margin-top:10px;
+}
