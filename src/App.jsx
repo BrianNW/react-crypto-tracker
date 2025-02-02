@@ -5,7 +5,7 @@ import Coin from './Coin'
 
 function App() {  
   const [coins, setCoins] = useState([])
-  const [search, setSearch] = useState('')
+  const [search, setSearch] = useState("")
   const [loading, setLoading] = useState(false); //button load state
   const [message, setMessage] = useState(""); // State for notification message
 
@@ -61,9 +61,8 @@ function App() {
             <li className="navitem"><a href="#">About</a></li>
           </ul>
       </nav>
-     <div className = 'coin-container'>
-      <div className ='coin-app'>        
-        <div className = 'coin-search'>
+     <div className = "coin-container">              
+        <div className = "coin-search">
           <h1 className="coin-text">Search a currency.  (This is only a demo)</h1>
           <span> Prices shown in USD.</span>
           <span> Don't see any data appear? Wait a few seconds before refreshing. This is due to the free API fetch limitation.</span>
@@ -79,6 +78,16 @@ function App() {
            {/* Notification Message */}
            {message && <p className="refresh-notification">{message}</p>}
         </div>
+        <div className ="coin-app">
+          {/* Table Header */}
+          <div className="coin-header">
+            <p className="coin-title">Coin</p>
+            <p className="coin-symbol">Symbol</p>
+            <p className="coin-price">Price (USD)</p>
+            <p className="coin-volume">24h Volume</p>
+            <p className="coin-marketcap">Market Cap</p>
+            <p className="coin-change">24h Change (%)</p>
+         </div>
         {/* map out coin data to the page */}
         {filteredCoins.map(coin => {
           return (
