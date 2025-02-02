@@ -6,14 +6,30 @@ import Coin from './Coin'
 function App() {  
   const [coins, setCoins] = useState([])
   const [search, setSearch] = useState('')
+  const [loading, setLoading] = useState(false); //button load state
 
-  useEffect(() => {
-     axios.get("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd").then(res => {
+
+  const fetchData = async () => {
+    setLoading(true); // Show loading when fetching
+    try {
+      const res = await axios.get("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd");
       setCoins(res.data);
-      console.log(res.data)
-     }).catch((e)=> console.log(e))
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+    setLoading(false); // Hide loading when done
+  };
+
+  // Use fetchData inside useEffect to fetch when the page loads
+  useEffect(() => {
+    fetchData();
+
+    // let interval = setInterval(fetchData, 10000); // Refresh every 10 seconds
   
-  }, [])
+    // return () => clearInterval(interval); // Cleanup on unmount
+  }, []);
+
+
 
   // handle the search input using the useState above
   const handleChange = e => {
@@ -37,12 +53,17 @@ function App() {
       </nav>
      <div className = 'coin-app'>         
         <div className = 'coin-search'>
-          <h1 className="coin-text">Search A Currency</h1>
-          <span> Prices shown in USD.</span>
+          <h1 className="coin-text">Search a currency.  This is only a demo!</h1>
+          <span> Prices shown in USD. Refreshes automatically every 10 seconds.</span>
           <span> Don't see any data appear? Wait a few seconds before refreshing. This is due to the free API fetch limitation.</span>
           <form> 
             <input type="text" placeholder="Search" className="coin-input" onChange= {handleChange}/>
           </form>
+
+          {/* Refresh Button */}
+          <button onClick={fetchData} disabled={loading} className="refresh-btn">
+            {loading ? "Refreshing..." : "Refresh Data"}
+          </button>
         </div>
         {filteredCoins.map(coin => {
           return (
