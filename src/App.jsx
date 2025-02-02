@@ -51,9 +51,10 @@ function App() {
             <li className="navitem"><a href="#">About</a></li>
           </ul>
       </nav>
-     <div className = 'coin-app'>         
+     <div className = 'coin-container'>
+      <div className ='coin-app'>        
         <div className = 'coin-search'>
-          <h1 className="coin-text">Search a currency.  This is only a demo!</h1>
+          <h1 className="coin-text">Search a currency.  (This is only a demo)</h1>
           <span> Prices shown in USD. Refreshes automatically every 10 seconds.</span>
           <span> Don't see any data appear? Wait a few seconds before refreshing. This is due to the free API fetch limitation.</span>
           <form> 
@@ -79,6 +80,7 @@ function App() {
             />
           )
         })}
+        </div> 
       </div>
     </>     
      
