@@ -54,7 +54,7 @@ function App() {
   return (
     <>
       <nav id="nav-container">
-      <a href="#" id="site-title">Crypto Tracker</a>       
+      <h1><a href="#" id="site-title"> Crypto Tracker </a>  </h1>     
           
            {/* Hamburger Icon */}
           <button id="menu-toggle" onClick={() => setMenuOpen(!menuOpen)}>
