@@ -4,10 +4,11 @@ import './App.css'
 import Coin from './Coin'
 
 function App() {  
-  const [coins, setCoins] = useState([])
-  const [search, setSearch] = useState("")
-  const [loading, setLoading] = useState(false); //button load state
+  const [coins, setCoins] = useState([]) // Set coin state
+  const [search, setSearch] = useState("") // Coin search state
+  const [loading, setLoading] = useState(false); // Button load state
   const [message, setMessage] = useState(""); // State for notification message
+  const [menuOpen, setMenuOpen] = useState(false); // State to toggle mobile menu
 
 
   const fetchData = async () => {
@@ -15,7 +16,7 @@ function App() {
     setMessage(""); // Clear old message
     console.log("Fetching new data...");
     try {
-      const res = await axios.get("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd");
+      const res = await axios.get("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&sparkline=true");
       setCoins(res.data);
       //Show success message after fetching
       setMessage("✅ Data updated successfully!");
@@ -54,7 +55,14 @@ function App() {
     <>
       <nav id="nav-container">
         <span id="logo-container"> <a href=""><img src="../public/aureus-logo.png" alt="logo" id="logo" /></a> </span>
-          <ul id="navbar">            
+          <h1 id="site-title">Crypto Tracker</h1>
+          
+           {/* Hamburger Icon */}
+          <button id="menu-toggle" onClick={() => setMenuOpen(!menuOpen)}>
+            ☰
+          </button>
+
+          <ul id="navbar" className={menuOpen ? "open" : ""}>            
             <li className="navitem"><a href="#">Home</a></li>
             <li className="navitem"><a href="#">Login</a></li>
             <li className="navitem"><a href="#">Contact</a></li>
@@ -63,7 +71,7 @@ function App() {
       </nav>
      <div className = "coin-container">              
         <div className = "coin-search">
-          <h1 className="coin-text">Search a currency.  (This is only a demo)</h1>
+          <h1 className="coin-text">Search a currency</h1>
           <span> Prices shown in USD.</span>
           <span> Don't see any data appear? Wait a few seconds before refreshing. This is due to the free API fetch limitation.</span>
           <form> 
@@ -87,6 +95,7 @@ function App() {
             <p className="coin-volume">24h Volume</p>
             <p className="coin-marketcap">Market Cap</p>
             <p className="coin-change">24h Change (%)</p>
+            <p className="coin-change">7 Day Change</p>
          </div>
         {/* map out coin data to the page */}
         {filteredCoins.map(coin => {
@@ -100,11 +109,16 @@ function App() {
             price={coin.current_price} 
             priceChange={coin.price_change_percentage_24h}
             volume={coin.total_volume}
+            sparkline={coin.sparkline_in_7d?.price || []}
             />
           )
         })}
         </div> 
       </div>
+       {/* Footer */}
+       <footer id="footer">
+        <p>© {new Date().getFullYear()} All Rights Reserved. Built by <a href="https://aureusdigitalsolutions.agency" target="_blank" rel="noopener noreferrer">Aureus Digital Solutions</a></p>
+      </footer>
     </>     
      
   )
