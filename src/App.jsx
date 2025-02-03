@@ -54,8 +54,7 @@ function App() {
   return (
     <>
       <nav id="nav-container">
-        <span id="logo-container"> <a href=""><img src="../public/aureus-logo.png" alt="logo" id="logo" /></a> </span>
-          <h1 id="site-title">Crypto Tracker</h1>
+      <a href="#" id="site-title">Crypto Tracker</a>       
           
            {/* Hamburger Icon */}
           <button id="menu-toggle" onClick={() => setMenuOpen(!menuOpen)}>
