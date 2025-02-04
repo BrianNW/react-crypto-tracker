@@ -9,7 +9,8 @@ import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
 
-const Coin = ({ name, image, symbol, price, volume, marketcap, priceChange, sparkline }) => {
+const Coin = ({ coin, name, image, symbol, price, volume, marketcap, priceChange, sparkline, isFavorite,
+  toggleFavorite,}) => {
 
    // Prepare data for chart
    const chartData = {
@@ -30,6 +31,15 @@ const Coin = ({ name, image, symbol, price, volume, marketcap, priceChange, spar
     <div className="coin-container">
         <div className="coin-row">
             <div className="coin">
+
+              {/* Heart icon for favorites */}
+                <span
+                  className="favorite-icon"
+                  onClick={() => toggleFavorite(coin)}
+                  style={{ cursor: "pointer", marginRight: "8px" }}
+                >
+                  {isFavorite ? "❤️" : "♡"}
+                </span>
                 <img src={image} alt="crypto" />
                 <h3 className="coin-name"> {name} </h3>
                 <p className="coin-symbol"> {symbol}</p>
