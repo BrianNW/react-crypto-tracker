@@ -123,3 +123,13 @@
   .coin-data.dark-mode p{
     color: #e0e0e0 !important;
   }
+
+  .dark-mode .favorites-title,
+  .dark-mode .currency-list-title h2 {
+    color: #e0e0e0 !important;
+  }
+
+  .dark-mode .favorite-icon {
+    font-size: 1.4rem;
+    color: #f4c542;
+  }

@@ -45,9 +45,7 @@ function App() {
   useEffect(() => {
     // Load favorites from local storage on mount
     setFavorites(getFavorites());
-
     fetchData();
-
     // let interval = setInterval(fetchData, 10000); // Refresh every 10 seconds
   
     // return () => clearInterval(interval); // Cleanup on unmount
