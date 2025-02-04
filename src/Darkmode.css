@@ -1,0 +1,125 @@
+
+/* Default (light mode) styles */
+.app-container {
+  background-color: #ffffff;
+  width:100%;
+  color: #000;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
+/* Dark mode overrides */
+.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+  }
+ 
+  
+.dark-mode #nav-container {
+  background: #333;
+}
+
+/* Dark mode toggle button styling */
+.dark-mode-toggle {
+  position: relative;
+  display: inline-flex;
+  width: 50px;
+  height: 24px;
+  margin-left: 20px; /* Adjust spacing as needed */
+}
+
+.dark-mode-label {
+  margin-left: 0;
+  font-size: 14px;
+  color: inherit; /* Inherits text color from the parent */
+}
+
+/* Hide the checkbox */
+.dark-mode-toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+/* The slider (the visible switch) */
+.dark-mode-toggle label {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: #ccc;
+  border-radius: 34px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+/* The knob inside the switch */
+.dark-mode-toggle label:before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  bottom: 2px;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.2s;
+}
+
+/* When the checkbox is checked, change the slider's background color */
+.dark-mode-toggle input:checked + label {
+  background-color: #4caf50;
+}
+
+/* Move the knob when toggled */
+.dark-mode-toggle input:checked + label:before {
+  transform: translateX(26px);
+}
+
+
+  .app-container .dark-mode{
+    color: #e0e0e0;  /* a light grey color */
+  }
+  
+.dark-mode .refresh-btn {
+  background-color: #005f73;
+}
+  
+  #dark-mode-toggle:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+    
+  
+/* dark mode styles override */
+
+/* For the main coin text heading */
+.dark-mode .coin-text {
+    color: #e0e0e0;  /* a light grey color */
+  }
+  
+  /* For the spans in the search section (adjust selectors as needed) */
+  .dark-mode .coin-search span {
+    color: #e0e0e0;
+  }
+  
+  /* For the coin data texts in each coin card */
+  .dark-mode .coin h3,
+  .dark-mode .coin p {
+    color: #e0e0e0;
+  }
+  
+  /* Ensure that coin data text becomes light in dark mode */
+  .dark-mode .coin-container p,
+  .dark-mode .coin-app p,
+  .dark-mode .coin-data p
+   {
+    color: #e0e0e0 !important;
+  }
+  
+  .dark-mode .coin-header p  {
+    color: #000 !important;
+  }
+  
+  .coin-data.dark-mode p{
+    color: #e0e0e0 !important;
+  }

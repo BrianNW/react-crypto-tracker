@@ -18,11 +18,11 @@
     display: flex;
     align-items: center;
     padding-right: 24px;
-    min-width: 300px;
+    min-width: 200px;
 
 }
 
-.coin h1 {
+.coin h3 {
     font-size: 16px;
     width: 150px;
 }

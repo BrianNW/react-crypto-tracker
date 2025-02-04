@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import './App.css'
+import './Darkmode.css'
 import Coin from './Coin'
 
 function App() {  
@@ -9,6 +10,7 @@ function App() {
   const [loading, setLoading] = useState(false); // Button load state
   const [message, setMessage] = useState(""); // State for notification message
   const [menuOpen, setMenuOpen] = useState(false); // State to toggle mobile menu
+  const [darkMode, setDarkMode] = useState(false); // Dark mode state
 
 
   const fetchData = async () => {
@@ -52,7 +54,9 @@ function App() {
 )
 
   return (
-    <>
+     // Apply the 'dark-mode' class if darkMode is true
+     <div className={`app-container ${darkMode ? 'dark-mode' : ''}`}>
+
       <nav id="nav-container">
       <h1><a href="#" id="site-title"> Crypto Tracker </a>  </h1>     
           
@@ -67,6 +71,22 @@ function App() {
             <li className="navitem"><a href="#">Contact</a></li>
             <li className="navitem"><a href="#">About</a></li>
           </ul>
+
+          {/* Dark Mode Toggle Switch */}
+          <div className="dark-mode-toggle">
+            <input
+              type="checkbox"
+              id="darkModeSwitch"
+              checked={darkMode}
+              onChange={() => setDarkMode(!darkMode)}
+            />
+            <label htmlFor="darkModeSwitch"></label>
+          </div>
+
+          <span className="dark-mode-label">
+            {darkMode ? "Dark Mode" : "Light Mode"}
+          </span>
+
       </nav>
      <div className = "coin-container">              
         <div className = "coin-search">
@@ -105,9 +125,9 @@ function App() {
             image={coin.image} 
             symbol={coin.symbol} 
             marketcap={coin.market_cap} 
-            price={coin.current_price} 
+            price={coin.current_price}            
+            volume={coin.total_volume} 
             priceChange={coin.price_change_percentage_24h}
-            volume={coin.total_volume}
             sparkline={coin.sparkline_in_7d?.price || []}
             />
           )
@@ -118,7 +138,7 @@ function App() {
        <footer id="footer">
         <p>© {new Date().getFullYear()} All Rights Reserved. Built by <a href="https://aureusdigitalsolutions.agency" target="_blank" rel="noopener noreferrer">Aureus Digital Solutions</a></p>
       </footer>
-    </>     
+    </div>     
      
   )
 }

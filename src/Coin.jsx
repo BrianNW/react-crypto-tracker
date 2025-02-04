@@ -1,5 +1,6 @@
 import React from 'react'
 import './Coin.css'
+import './Darkmode.css'
 // add chart for 7 day change data
 import { Line } from "react-chartjs-2";
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from "chart.js";
@@ -8,7 +9,7 @@ import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
 
-const Coin = ({ name, image, symbol, price, volume, priceChange, sparkline }) => {
+const Coin = ({ name, image, symbol, price, volume, marketcap, priceChange, sparkline }) => {
 
    // Prepare data for chart
    const chartData = {
@@ -30,12 +31,13 @@ const Coin = ({ name, image, symbol, price, volume, priceChange, sparkline }) =>
         <div className="coin-row">
             <div className="coin">
                 <img src={image} alt="crypto" />
-                <h1> {name} </h1>
+                <h3 className="coin-name"> {name} </h3>
                 <p className="coin-symbol"> {symbol}</p>
             </div>
             <div className="coin-data">
               <p className="coin-price"> ${price.toLocaleString()} </p>
-              <p className="coin-volume">${volume.toLocaleString()}</p>              
+              <p className="coin-volume">${volume.toLocaleString()}</p>
+              <p className="coin-marketcap">${marketcap ? marketcap.toLocaleString() : "N/A"}</p>              
               {priceChange < 0 ? (
               <p className="coin-percent red"> {priceChange.toFixed(2)} %</p> ) : (
                 <p className="coin-percent green"> {priceChange.toFixed(2)}%</p>)
